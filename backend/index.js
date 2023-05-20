@@ -45,7 +45,7 @@ app.post("/signup", async (req, res) => {
 
   userModel.findOne({ email: email }, (err, result) => {
     // console.log(result);
-    // console.log(err);
+    console.log(err);
     if (result) {
       res.send({ message: "Email id is already register", alert: false });
     } else {
@@ -69,7 +69,7 @@ app.post("/login", (req, res) => {
         email: result.email,
         image: result.image,
       };
-      // console.log(dataSend);
+      console.log(dataSend);
       res.send({
         message: "Login is successfully",
         alert: true,
@@ -113,7 +113,7 @@ app.get("/product",async(req,res)=>{
 })
  
 /*****payment getWay */
-// console.log(process.env.STRIPE_SECRET_KEY)
+console.log(process.env.STRIPE_SECRET_KEY)
 
 
 const stripe  = new Stripe(process.env.STRIPE_SECRET_KEY)
@@ -126,7 +126,7 @@ app.post("/create-checkout-session",async(req,res)=>{
           mode : "payment",
           payment_method_types : ['card'],
           billing_address_collection : "auto",
-          shipping_options : [{shipping_rate : "shr_1N0qDnSAq8kJSdzMvlVkJdua"}],
+          shipping_options : [{shipping_rate : "shr_1N9viRSENSPQVMZlZGa515Ph"}],
 
           line_items : req.body.map((item)=>{
             return{
